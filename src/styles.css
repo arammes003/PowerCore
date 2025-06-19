@@ -1,2 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+@theme {
+  /* Primarios */
+  --color-primary-50: #a3a9fb;
+  --color-primary-100: #848cfa;
+  --color-primary-200: #666ff8;
+  --color-primary-300: #4752f7;
+  --color-primary-400: #2835f6;
+  --color-primary-500: #1927f5;
+  --color-primary-600: #0a17e0;
+  --color-primary-700: #0814be;
+  --color-primary-800: #07109b;
+  --color-primary-900: #050d79;
+  --color-primary-950: #092241;
+
+  /* Secundarios */
+  --color-secondary-50: #fbe9a3;
+  --color-secondary-100: #fae184;
+  --color-secondary-200: #f8da65;
+  --color-secondary-300: #f7d246;
+  --color-secondary-400: #f6cb27;
+  --color-secondary-500: #f5c718;
+  --color-secondary-600: #dfb30a;
+  --color-secondary-700: #bd9708;
+  --color-secondary-800: #9b7c07;
+  --color-secondary-900: #786005;
+
+  /* Success */
+  --color-success-50: #bffba3;
+  --color-success-100: #aafa84;
+  --color-success-200: #94f865;
+  --color-success-300: #7ff746;
+  --color-success-400: #74f637;
+  --color-success-500: #5fff18;
+  --color-success-600: #4edf0a;
+  --color-success-700: #42bd08;
+  --color-success-800: #369b07;
+  --color-success-900: #2a7805;
+
+  /* Alert */
+  --color-alert-50: #fbd6a9;
+  --color-alert-100: #fac88c;
+  --color-alert-200: #f8ba6f;
+  --color-alert-300: #f7ad52;
+  --color-alert-400: #f69f35;
+  --color-alert-500: #f59827;
+  --color-alert-600: #eb860b;
+  --color-alert-700: #c77109;
+  --color-alert-800: #a35d08;
+  --color-alert-900: #7f4806;
+
+  /* Error */
+  --color-error-50: #fbbda3;
+  --color-error-100: #faab84;
+  --color-error-200: #f89265;
+  --color-error-300: #f77c46;
+  --color-error-400: #f66627;
+  --color-error-500: #f55b18;
+  --color-error-600: #df4a0a;
+  --color-error-700: #bd3f08;
+  --color-error-800: #9b3407;
+  --color-error-900: #782805;
+
+  /* Neutral */
+  --color-neutral-50: #ecedf8;
+  --color-neutral-100: #e5e7fb;
+  --color-neutral-200: #dfe1fa;
+  --color-neutral-300: #d9d8f9;
+  --color-neutral-400: #d2d5f8;
+  --color-neutral-500: #cfd2f8;
+  --color-neutral-600: #9aa0f0;
+  --color-neutral-700: #656fe9;
+  --color-neutral-800: #303de1;
+  --color-neutral-900: #1b27b9;
+
+  /* TEXTO */
+  --color-text: #222222;
+}

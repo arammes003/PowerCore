@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
-import { PageStatsCardComponent } from "../../components/page-stats-card/page-stats-card.component";
-
-interface CardOptions {
-  count: number;
-  icon: string;
-  increment: number;
-  message: string;
-  title: string;
-}
+import { PageStatsCardComponent } from '../../components/page-stats-card/page-stats-card.component';
+import { CardOptions } from '../../interfaces/CardOptions';
 
 @Component({
   selector: 'app-home-page',

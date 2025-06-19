@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PageStatsCardComponent } from "../../components/page-stats-card/page-stats-card.component";
 
 interface CardOptions {
   count: number;
@@ -10,11 +9,11 @@ interface CardOptions {
 }
 
 @Component({
-  selector: 'app-home-page',
-  imports: [PageStatsCardComponent],
-  templateUrl: './home-page.component.html',
+  selector: 'admin-page-stats-card',
+  imports: [],
+  templateUrl: './page-stats-card.component.html',
 })
-export default class HomePageComponent {
+export class PageStatsCardComponent {
   cardOptions: CardOptions[] = [
     {
       title: 'Atletas Registrados',

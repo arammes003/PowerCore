@@ -1,0 +1,25 @@
+<div class="flex flex-wrap gap-x-10 gap-y-6 w-full">
+  @for (item of cardOptions; track item.title) {
+  <div
+    class="bg-white rounded-xl shadow-sm p-6 flex flex-col flex-1 w-100 min-w-[250px] max-w-[450px]"
+  >
+    <div class="flex items-start justify-between">
+      <div>
+        <p class="text-gray-500 text-sm font-semibold mb-2">
+          {{ item.title }}
+        </p>
+        <p class="text-2xl font-bold text-text">{{ item.count }}</p>
+      </div>
+      <div
+        class="bg-primary-950 rounded-lg p-2 shadow text-white flex items-center justify-center"
+      >
+        <img [src]="item.icon" [alt]="item.title + ' Icon'" class="w-6 h-6" />
+      </div>
+    </div>
+    <div class="mt-4">
+      <span class="text-green-500 font-semibold">+{{ item.increment }}% </span>
+      <span class="text-gray-500 text-sm">{{ item.message }}</span>
+    </div>
+  </div>
+  }
+</div>

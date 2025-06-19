@@ -1,13 +1,11 @@
 <main
   class="bg-slate-100 overflow-y-scroll w-screen h-screen antialiased text-slate-300 selection:bg-blue-600 selection:text-white"
 >
-  <section class="flex flex-col relative w-screen">
+  <section class="flex flex-col relative p-2">
     <!-- SIDE MENU -->
     <admin-side-menu />
 
-    <article
-      class="ml-64 px-4 mt-6 flex flex-col flex-1 w-full h-full text-text"
-    >
+    <article class="ml-64 px-4 mt-6 flex flex-col flex-1 w-fit h-fit text-text">
       <router-outlet />
     </article>
   </section>

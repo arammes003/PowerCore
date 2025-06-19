@@ -31,6 +31,12 @@ export const routes: Routes = [
       },
 
       {
+        path: 'ajustes',
+        loadComponent: () =>
+          import('./admin/pages/settings-page/settings-page.component'),
+      },
+
+      {
         path: '**',
         redirectTo: 'inicio',
       },

@@ -35,6 +35,13 @@ export class SideMenuOptionsComponent {
       label: 'Competiciones',
       route: '/dashboard/competiciones',
     },
+    
+    {
+      icon: 'assets/icons/coach',
+      label: 'Entrenadores',
+      route: '/dashboard/entrenadores',
+    },
+
     {
       icon: 'assets/icons/settings',
       label: 'Ajustes',

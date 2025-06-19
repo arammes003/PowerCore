@@ -31,6 +31,12 @@ export const routes: Routes = [
       },
 
       {
+        path: 'entrenadores',
+        loadComponent: () =>
+          import('./admin/pages/coaches-page/coaches-page.component'),
+      },
+
+      {
         path: 'ajustes',
         loadComponent: () =>
           import('./admin/pages/settings-page/settings-page.component'),

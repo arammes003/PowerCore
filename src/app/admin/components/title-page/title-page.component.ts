@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
 import { MenuOption } from '../../interfaces/MenuOption';
 import { MenuService } from '../../services/menu.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'admin-breadcrumbs',
-  imports: [RouterLink],
-  templateUrl: './breadcrumbs.component.html',
+  selector: 'admin-title-page',
+  imports: [],
+  templateUrl: './title-page.component.html',
 })
-export class BreadcrumbsComponent {
-  breadcrumbs: MenuOption[] = [];
+export class TitlePageComponent {
+  pages: MenuOption[] = [];
 
-  constructor(private router: Router, private menuService: MenuService) {}
+  constructor(private menuService: MenuService, private router: Router) {}
 
   get menuOptions(): MenuOption[] {
     return this.menuService.menuOptions;
@@ -24,8 +24,6 @@ export class BreadcrumbsComponent {
 
   setBreadcrumbs() {
     const url = this.router.url;
-    this.breadcrumbs = this.menuOptions.filter((opt) =>
-      url.startsWith(opt.route)
-    );
+    this.pages = this.menuOptions.filter((opt) => url.startsWith(opt.route));
   }
 }

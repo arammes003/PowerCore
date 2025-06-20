@@ -5,10 +5,11 @@
     <!-- SIDE MENU -->
     <admin-side-menu />
 
-    <article
-      class="ml-64 px-4 mt-6 flex flex-col flex-1 w-fit h-full text-text"
-    >
-      <app-breadcrumbs />
+    <article class="ml-64 px-4 mt-6 flex flex-col flex-1 h-full text-text">
+      <admin-breadcrumbs />
+      <section class="mb-5">
+        <admin-title-page />
+      </section>
       <router-outlet />
     </article>
   </section>

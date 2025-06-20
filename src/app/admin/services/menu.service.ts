@@ -13,6 +13,11 @@ export class MenuService {
     },
     {
       icon: 'assets/icons/person',
+      label: 'Usuarios',
+      route: '/dashboard/usuarios',
+    },
+    {
+      icon: 'assets/icons/person',
       label: 'Atletas',
       route: '/dashboard/atletas',
     },

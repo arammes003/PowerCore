@@ -22,6 +22,11 @@ export class SideMenuOptionsComponent {
     },
     {
       icon: 'assets/icons/person',
+      label: 'Usuarios',
+      route: '/dashboard/usuarios',
+    },
+    {
+      icon: 'assets/icons/person',
       label: 'Atletas',
       route: '/dashboard/atletas',
     },
@@ -35,7 +40,7 @@ export class SideMenuOptionsComponent {
       label: 'Competiciones',
       route: '/dashboard/competiciones',
     },
-    
+
     {
       icon: 'assets/icons/coach',
       label: 'Entrenadores',

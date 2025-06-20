@@ -14,10 +14,17 @@ export const routes: Routes = [
       },
 
       {
+        path: 'usuarios',
+        loadComponent: () =>
+          import('./admin/pages/users-page/users-page.component'),
+      },
+
+      {
         path: 'atletas',
         loadComponent: () =>
           import('./admin/pages/athletes-page/athletes-page.component'),
       },
+
       {
         path: 'clubes',
         loadComponent: () =>

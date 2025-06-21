@@ -5,7 +5,7 @@
     routerLinkActive="bg-secondary-500"
     #rla="routerLinkActive"
     class="w-full px-2 inline-flex space-x-2 items-center rounded-xl py-3 hover:bg-secondary-50/20 transition ease-linear duration-150"
-    [ngClass]="{
+    [class]="{
       'hover:bg-secondary-50/20': !rla.isActive
     }"
   >
@@ -19,7 +19,7 @@
     <div class="flex flex-col">
       <span
         class="text-l font-bold"
-        [ngClass]="rla.isActive ? 'text-text' : 'text-slate-50'"
+        [class]="rla.isActive ? 'text-text' : 'text-slate-50'"
         >{{ item.label }}</span
       >
     </div>

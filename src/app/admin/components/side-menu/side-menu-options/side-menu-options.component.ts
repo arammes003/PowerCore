@@ -1,56 +1,20 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-interface MenuOption {
-  icon: string;
-  label: string;
-  route: string;
-}
+import { MenuOption } from 'src/app/admin/interfaces/MenuOption';
+import { MenuService } from 'src/app/admin/services/menu.service';
 
 @Component({
   selector: 'admin-side-menu-options',
-  imports: [RouterLink, RouterLinkActive, NgClass],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './side-menu-options.component.html',
 })
 export class SideMenuOptionsComponent {
-  menuOptions: MenuOption[] = [
-    {
-      icon: 'assets/icons/dashboard',
-      label: 'Dashboard',
-      route: '/dashboard/inicio',
-    },
-    {
-      icon: 'assets/icons/person',
-      label: 'Usuarios',
-      route: '/dashboard/usuarios',
-    },
-    {
-      icon: 'assets/icons/person',
-      label: 'Atletas',
-      route: '/dashboard/atletas',
-    },
-    {
-      icon: 'assets/icons/shield',
-      label: 'Clubes',
-      route: '/dashboard/clubes',
-    },
-    {
-      icon: 'assets/icons/competition',
-      label: 'Competiciones',
-      route: '/dashboard/competiciones',
-    },
+  menu: MenuOption[] = [];
 
-    {
-      icon: 'assets/icons/coach',
-      label: 'Entrenadores',
-      route: '/dashboard/entrenadores',
-    },
+  constructor(private menuService: MenuService) {}
 
-    {
-      icon: 'assets/icons/settings',
-      label: 'Ajustes',
-      route: '/dashboard/ajustes',
-    },
-  ];
+  get menuOptions(): MenuOption[] {
+    return this.menuService.menuOptions;
+  }
 }

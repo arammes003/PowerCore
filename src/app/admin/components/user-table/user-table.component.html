@@ -1,0 +1,72 @@
+<table class="min-w-full divide-y divide-neutral-200">
+  <thead>
+    <tr>
+      <th
+        class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
+      >
+        Nombre y apellidos
+      </th>
+      <th
+        class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
+      >
+        TIPO DE USUARIO
+      </th>
+      <th
+        class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
+      >
+        ESTADO CUENTA
+      </th>
+      <th
+        class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
+      >
+        REGISTRADO
+      </th>
+      <th class="px-6 py-3"></th>
+    </tr>
+  </thead>
+
+  <tbody class="divide-y divide-gray-200">
+    @for (user of users(); track user) {
+    <tr>
+      <td class="px-6 py-4 flex items-center">
+        <img
+          class="w-10 h-10 rounded-lg mr-4"
+          [src]="
+            user.avatar
+              ? user.avatar
+              : 'https://randomuser.me/api/portraits/men/32.jpg'
+          "
+          alt="Foto de usuario"
+        />
+        <div>
+          <div class="font-semibold text-gray-900">{{ user.name }}</div>
+          <div class="text-sm text-gray-500">{{ user.email }}</div>
+        </div>
+      </td>
+
+      <td class="px-6 py-4">
+        <div class="font-semibold text-gray-700">
+          {{ roleService.getRoleLabel(user.role[0]) }}
+        </div>
+      </td>
+
+      <td class="px-6 py-4">
+        <p
+          class="inline-block px-3 py-1 text-xs font-bold rounded text-white"
+          [class]="user.status ? 'bg-success-800' : 'bg-error-800'"
+        >
+          {{ user.status ? "ACTIVO" : "INACTIVO" }}
+        </p>
+      </td>
+
+      <td class="px-6 py-4 text-gray-700">
+        {{ user.createdAt | date : "dd-MM-yyyy" }}
+      </td>
+
+      <td class="px-6 py-4">
+        <a href="#" class="text-indigo-600 underline font-medium">Modificar</a>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

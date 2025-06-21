@@ -3,11 +3,13 @@ export interface UsersResponse {
 }
 
 export interface UserItem {
+  __v: number;
   _id: string;
-  name: string;
+  avatar?: string;
+  createdAt: Date;
   email: string;
+  name: string;
   password: string;
   role: string[];
-  createdAt: Date;
-  __v: number;
+  status: boolean;
 }

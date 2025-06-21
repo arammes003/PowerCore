@@ -1,20 +1,8 @@
 <section class="gap-y-6 w-full">
-  <!-- GRID LAYOUT: Tabla Izquierda / Movimientos Derecha -->
-  <div class="gap-6">
-    <!-- Tabla de atletas (2/3 del ancho en desktop) -->
-    <div class="lg:col-span-2">
-      <div class="bg-white rounded-lg shadow">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead>
-            <admin-user-list-header />
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <admin-user-list [users]="userService.users()" />
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <!-- Tabla de atletas (2/3 del ancho en desktop) -->
+  <article class="bg-white rounded-lg shadow">
+    <admin-user-table [users]="userService.users()" />
+  </article>
 </section>
 
 <!-- <tbody class="divide-y divide-gray-200">

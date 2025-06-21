@@ -26,7 +26,7 @@ export class UserService {
       .get<UsersResponse>(`${environment.apiUrl}/auth/`, {
         headers: {
           Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTY3NTcwYmU1N2ZlODE3M2UzZGQ0YyIsImlhdCI6MTc1MDQ5ODM2MywiZXhwIjoxNzUwNTA1NTYzfQ.WcTMywXUihRDSRffD55mPF5tlFZC5CU90nzsltu1cis',
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTY5M2ZiYTkzNDczMDA4NjExM2NkZiIsImlhdCI6MTc1MDUwNDQ0MywiZXhwIjoxNzUwNTExNjQzfQ.-wSx_eLK7vzbZnbV1Chhrat9IFHoer5Udt-HuaNMyB4',
         },
       })
       .subscribe((res) => {

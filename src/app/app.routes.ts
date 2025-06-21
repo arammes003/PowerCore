@@ -58,15 +58,20 @@ export const routes: Routes = [
 
   // Redireccion
 
+  // {
+  //   path: 'auth',
+  //   children: [
+  //     {
+  //       path: 'login',
+  //       loadComponent: () =>
+  //         import('./auth/pages/login-register/login-page.component'),
+  //     },
+  //   ],
+  // },
+
   {
     path: 'auth',
-    children: [
-      {
-        path: 'login',
-        loadComponent: () =>
-          import('./auth/pages/login-register/login-register.component'),
-      },
-    ],
+    loadChildren: () => import('./auth/auth.routes'),
   },
 
   {

@@ -8,16 +8,20 @@
   <!-- <p class="text-slate-500 text-sm">{{ envs.companySlogan }}</p> -->
 </section>
 
+@if (authService.authStatus() === 'authenticated') {
 <section id="profile" class="px-6 pb-10">
-  <p class="text-slate-400 mb-1">Bienvenido de nuevo,</p>
-  <a href="#" class="inline-flex space-x-2 items-center">
+  <h3 class="text-slate-400 mb-1">Bienvenido de nuevo,</h3>
+  <p class="inline-flex space-x-2 items-center">
     <span>
       <img
         class="rounded-full w-8 h-8"
-        src="https://media.licdn.com/dms/image/v2/D4D03AQFhuhrZlDIaMw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709923003122?e=2147483647&v=beta&t=2jr_lHiokJJR4Q67ygH_E7mMWEp09AsnEVKOHhMFbYk"
+        [src]="authService.user()?.avatar"
         alt="Admin Image"
       />
     </span>
-    <span class="text-sm md:text-base font-bold"> Alfonso Ramírez </span>
-  </a>
+    <span class="text-sm md:text-base font-bold">
+      {{ authService.user()?.name }}
+    </span>
+  </p>
 </section>
+}

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { environment } from '@enviroments/environment';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'admin-side-menu-header',
@@ -8,4 +9,6 @@ import { environment } from '@enviroments/environment';
 })
 export class SideMenuHeaderComponent {
   envs = environment;
+
+  authService = inject(AuthService);
 }

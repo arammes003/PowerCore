@@ -48,5 +48,10 @@ export class MenuService {
       route: '/dashboard/ajustes',
       message: 'Gestiona tu perfil y vista',
     },
+    {
+      icon: 'assets/icons/logout',
+      label: 'Cerrar sesión',
+      route: '/auth/login',
+    },
   ];
 }

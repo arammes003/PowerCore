@@ -4,6 +4,11 @@ import { AuthenticatedGuard } from './auth/guards/authenticated.guard';
 import { IsAdminGuard } from './auth/guards/is-admin.guard';
 
 export const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./powercore/powercore.routes'),
+  },
+
   // Panel de administrador
   {
     path: 'dashboard',
@@ -59,19 +64,6 @@ export const routes: Routes = [
       },
     ],
   },
-
-  // Redireccion
-
-  // {
-  //   path: 'auth',
-  //   children: [
-  //     {
-  //       path: 'login',
-  //       loadComponent: () =>
-  //         import('./auth/pages/login-register/login-page.component'),
-  //     },
-  //   ],
-  // },
 
   {
     path: 'auth',

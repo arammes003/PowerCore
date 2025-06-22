@@ -55,6 +55,28 @@ export class AuthService {
       );
   }
 
+  registerUser(
+    name: string,
+    email: string,
+    password: string
+  ): Observable<boolean | string> {
+    return this.http
+      .post<AuthResponse>(`${baseUrl}/auth/register`, {
+        name: name,
+        email: email,
+        password: password,
+      })
+      .pipe(
+        tap((res) => {
+          this.handleAuthSuccess(res);
+        }),
+        map(() => true),
+        catchError((error: any) => {
+          return this.handleAuthError(error);
+        })
+      );
+  }
+
   checkAuthStatus(): Observable<boolean> {
     const token = localStorage.getItem('token');
     if (!token) {

@@ -64,7 +64,7 @@
     Iniciar sesión
   </button>
   @if (hasError()) {
-  <p>Credenciales invalidas</p>
+  <p class="text-error-500 text-center">{{ errorMessage }}</p>
   }
   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
     ¿No tienes cuenta?

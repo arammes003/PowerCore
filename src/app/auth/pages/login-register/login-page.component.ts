@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,6 +12,7 @@ export class LoginPageComponent {
   formBuilder = inject(FormBuilder);
   hasError = signal(false);
   isPosting = signal(false);
+  router = inject(Router);
 
   authService = inject(AuthService);
 
@@ -20,19 +21,36 @@ export class LoginPageComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
+  errorMessage: string | null = null;
+
   onSubmit() {
-    if (this.loginForm.invalid) {
-      this.hasError.set(true);
-      setTimeout(() => {
-        this.hasError.set(false);
-      }, 2000);
-      return;
-    }
+    // if (this.loginForm.invalid) {
+    //   this.hasError.set(true);
+    //   setTimeout(() => {
+    //     this.hasError.set(false);
+    //   }, 2000);
+    //   return;
+    // }
 
     const { email = '', password = '' } = this.loginForm.value;
 
     this.authService.loginUser(email!, password!).subscribe((res) => {
       console.log(res);
+
+      if (res === true) {
+        this.router.navigateByUrl('/dashboard');
+        return;
+      }
+
+      if (typeof res === 'string') {
+        this.errorMessage = res;
+      }
+
+      this.hasError.set(true);
+      setTimeout(() => {
+        this.hasError.set(false);
+        this.errorMessage = null;
+      }, 2000);
     });
   }
 }

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { NotAuthenticatedGuard } from './auth/guards/not-authenticated.guard';
 import { AuthenticatedGuard } from './auth/guards/authenticated.guard';
+import { IsAdminGuard } from './auth/guards/is-admin.guard';
 
 export const routes: Routes = [
   // Panel de administrador
@@ -8,7 +9,7 @@ export const routes: Routes = [
     path: 'dashboard',
     loadComponent: () =>
       import('./admin/pages/dashboard-page/dashboard-page.component'),
-    canMatch: [AuthenticatedGuard],
+    canMatch: [AuthenticatedGuard, IsAdminGuard],
     children: [
       {
         path: 'inicio',

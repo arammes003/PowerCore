@@ -8,6 +8,11 @@ export const routes: Routes = [
     path: '',
     loadChildren: () => import('./powercore/powercore.routes'),
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.routes'),
+    canMatch: [NotAuthenticatedGuard],
+  },
 
   // Panel de administrador
   {
@@ -66,13 +71,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.routes'),
-    canMatch: [NotAuthenticatedGuard],
-  },
-
-  {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: '',
   },
 ];

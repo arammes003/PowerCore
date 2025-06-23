@@ -49,7 +49,7 @@ export class MenuService {
       message: 'Gestiona tu perfil y vista',
     },
     {
-      icon: 'assets/icons/logout',
+      icon: 'assets/icons/logout.svg',
       label: 'Cerrar sesión',
       route: '/auth/login',
     },

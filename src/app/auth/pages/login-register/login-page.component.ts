@@ -24,14 +24,6 @@ export class LoginPageComponent {
   errorMessage: string | null = null;
 
   onSubmit() {
-    // if (this.loginForm.invalid) {
-    //   this.hasError.set(true);
-    //   setTimeout(() => {
-    //     this.hasError.set(false);
-    //   }, 2000);
-    //   return;
-    // }
-
     const { email = '', password = '' } = this.loginForm.value;
 
     this.authService.loginUser(email!, password!).subscribe((res) => {

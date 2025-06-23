@@ -1,5 +1,5 @@
 <table class="min-w-full divide-y divide-neutral-200">
-  <thead>
+  <thead class="sticky top-0 z-10 bg-white">
     <tr>
       <th
         class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
@@ -7,17 +7,17 @@
         Nombre y apellidos
       </th>
       <th
-        class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
+        class="px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider"
       >
         TIPO DE USUARIO
       </th>
       <th
-        class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
+        class="px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider"
       >
         ESTADO CUENTA
       </th>
       <th
-        class="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider"
+        class="px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider"
       >
         REGISTRADO
       </th>
@@ -45,12 +45,12 @@
       </td>
 
       <td class="px-6 py-4">
-        <div class="font-semibold text-gray-700">
+        <div class="font-semibold text-gray-700 text-center">
           {{ roleService.getRoleLabel(user.role[0]) }}
         </div>
       </td>
 
-      <td class="px-6 py-4">
+      <td class="px-6 py-4 text-center">
         <p
           class="inline-block px-3 py-1 text-xs font-bold rounded text-white"
           [class]="user.status ? 'bg-success-800' : 'bg-error-800'"
@@ -59,11 +59,11 @@
         </p>
       </td>
 
-      <td class="px-6 py-4 text-gray-700">
+      <td class="px-6 py-4 text-gray-700 text-center">
         {{ user.createdAt | date : "dd-MM-yyyy" }}
       </td>
 
-      <td class="px-6 py-4">
+      <td class="px-6 py-4 text-center">
         <a href="#" class="text-indigo-600 underline font-medium">Modificar</a>
       </td>
     </tr>

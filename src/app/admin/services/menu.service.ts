@@ -19,7 +19,7 @@ export class MenuService {
       message: 'Gestiona los registros, eventos y movimientos',
     },
     {
-      icon: 'assets/icons/person',
+      icon: 'assets/icons/dumbell',
       label: 'Atletas',
       route: '/dashboard/atletas',
       message: 'Gestiona los atletas y sus movimientos',

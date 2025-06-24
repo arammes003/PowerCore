@@ -1,0 +1,50 @@
+<header
+  class="bg-primary-950 w-full h-[3.5em] flex items-center rounded-xl shadow-lg"
+>
+  <article class="flex justify-between items-center w-full px-8">
+    <!-- Logo -->
+    <figure class="flex items-center">
+      <img
+        src="assets/images/logo.png"
+        class="h-12"
+        alt="PowerTrackingSystem Logo"
+      />
+      <p class="ml-3 text-2xl text-white font-bold tracking-wide">
+        {{ envs.companyName
+        }}<span class="text-secondary-500">{{ envs.companyName2 }}</span>
+      </p>
+    </figure>
+    <nav class="flex gap-8 ml-10">
+      @for (item of menuOptions; track item.route) {
+      <p
+        class="text-white hover:text-secondary-400 transition font-medium cursor-pointer"
+        [routerLink]="item.route"
+      >
+        {{ item.label }}
+      </p>
+      }
+    </nav>
+
+    <!-- Usuario / Registro -->
+    <section>
+      @if(authService.authStatus() === 'not-authenticated') {
+      <button
+        class="hover:cursor-pointer bg-secondary-500 hover:bg-secondary-600 text-text font-semibold px-5 py-2 rounded-lg shadow transition"
+        [routerLink]="['/auth/login']"
+      >
+        Entrar | Registrarse
+      </button>
+      } @else if (authService.authStatus() === 'authenticated') {
+      <button class="pr-2 text-white">
+        {{ authService.user()?.name }}
+      </button>
+      <button
+        class="btn btn-sm bg-error-700 p-1 rounded-lg"
+        (click)="authService.logout()"
+      >
+        Cerrar sesión
+      </button>
+      }
+    </section>
+  </article>
+</header>

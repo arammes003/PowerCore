@@ -34,7 +34,7 @@ export class RegisterPageComponent {
     } = this.registerForm.value;
 
     if (password !== confirmPassword) {
-      this.errorMessage = "Passwords don't match";
+      this.errorMessage = 'Las contraseñas no coinciden';
       this.hasError.set(true);
       setTimeout(() => {
         this.hasError.set(false);

@@ -19,6 +19,8 @@
       <p
         class="text-white hover:text-secondary-400 transition font-medium cursor-pointer"
         [routerLink]="item.route"
+        routerLinkActive="text-yellow-400"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         {{ item.label }}
       </p>

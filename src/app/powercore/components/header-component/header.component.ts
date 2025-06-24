@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { environment } from '@enviroments/environment';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { MenuOptions } from '../../interfaces/menu-options';
@@ -7,7 +7,7 @@ import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-header-component',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
 })
 export class HeaderComponentComponent {

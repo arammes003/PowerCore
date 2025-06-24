@@ -30,16 +30,14 @@
     <tr>
       <td class="px-6 py-4 flex items-center">
         <img
-          class="w-10 h-10 rounded-lg mr-4"
-          [src]="
-            user.avatar
-              ? user.avatar
-              : 'https://randomuser.me/api/portraits/men/32.jpg'
-          "
+          class="w-10 h-10 rounded-lg mr-4 object-cover"
+          [src]="user.avatar ? user.avatar : 'assets/images/user-default.avif'"
           alt="Foto de usuario"
         />
         <div>
-          <div class="font-semibold text-gray-900">{{ user.name }}</div>
+          <div class="font-semibold text-gray-900">
+            {{ user.name }} {{ user.lastName }}
+          </div>
           <div class="text-sm text-gray-500">{{ user.email }}</div>
         </div>
       </td>
@@ -53,9 +51,9 @@
       <td class="px-6 py-4 text-center">
         <p
           class="inline-block px-3 py-1 text-xs font-bold rounded text-white"
-          [class]="user.status ? 'bg-success-800' : 'bg-error-800'"
+          [class]="user.isActive ? 'bg-success-800' : 'bg-error-800'"
         >
-          {{ user.status ? "ACTIVO" : "INACTIVO" }}
+          {{ user.isActive ? "ACTIVO" : "INACTIVO" }}
         </p>
       </td>
 

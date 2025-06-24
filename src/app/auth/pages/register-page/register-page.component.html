@@ -8,18 +8,35 @@
   [formGroup]="registerForm"
   (ngSubmit)="onSubmit()"
 >
-  <section>
-    <label
-      for="name"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >Nombre completo</label
-    >
-    <input
-      type="text"
-      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-      placeholder="Alfonso Ramírez Mestanza"
-      formControlName="name"
-    />
+  <section class="flex gap-4">
+    <div class="flex-1">
+      <label
+        for="name"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Nombre</label
+      >
+      <input
+        type="text"
+        id="name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+        placeholder="Alfonso"
+        formControlName="name"
+      />
+    </div>
+    <div class="flex-1">
+      <label
+        for="lastName"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Apellidos</label
+      >
+      <input
+        type="text"
+        id="lastName"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+        placeholder="Ramírez Mestanza"
+        formControlName="lastName"
+      />
+    </div>
   </section>
   <section>
     <label
@@ -29,41 +46,60 @@
     >
     <input
       type="email"
-      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
       placeholder="name@company.com"
       formControlName="email"
     />
   </section>
-  <section>
-    <label
-      for="password"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >Contraseña</label
-    >
-    <input
-      type="password"
-      placeholder="••••••••"
-      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      formControlName="password"
-    />
+  <section class="flex gap-4">
+    <div class="flex-1">
+      <label
+        for="password"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Contraseña</label
+      >
+      <input
+        type="password"
+        placeholder="••••••••"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+        formControlName="password"
+      />
+    </div>
+    <div class="flex-1">
+      <label
+        for="password"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Confirmar contraseña</label
+      >
+      <input
+        type="password"
+        placeholder="••••••••"
+        class="bg-gray-50 border border-neutral-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        formControlName="confirmPassword"
+      />
+    </div>
   </section>
+
   <section>
-    <label
-      for="password"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >Confirmar contraseña</label
-    >
-    <input
-      type="password"
-      placeholder="••••••••"
-      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      formControlName="confirmPassword"
-    />
+    <div class="flex-1">
+      <label
+        for="avatar"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Avatar</label
+      >
+      <input
+        type="file"
+        id="avatar"
+        name="avatar"
+        accept="image/*"
+        class="cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+      />
+    </div>
   </section>
 
   <button
     type="submit"
-    class="w-full text-text text-md font-medium bg-secondary-500 hover:bg-secondary-600 focus:ring-2 focus:outline-none focus:ring-secondary-300 rounded-lg px-5 py-2.5 text-center dark:bg-secondary-500 dark:hover:bg-secondary-700 dark:focus:ring-secondary-800"
+    class="w-full cursor-pointer text-text text-md font-medium bg-secondary-500 hover:bg-secondary-600 rounded-lg px-5 py-2.5 text-center dark:bg-secondary-500 dark:hover:bg-secondary-700 dark:focus:ring-secondary-800"
   >
     Registrarse
   </button>
@@ -74,7 +110,7 @@
     ¿Ya tienes cuenta?
     <a
       routerLink="'/auth/login'"
-      class="font-medium text-primary-600 dark:text-primary-200 underline"
+      class="font-medium text-primary-600 dark:text-primary-200 underline cursor-pointer"
       >Inicia sesión</a
     >
   </p>

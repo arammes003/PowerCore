@@ -9,7 +9,8 @@ export interface UserItem {
   createdAt: Date;
   email: string;
   name: string;
+  lastName?: string;
   password: string;
   role: string[];
-  status: boolean;
+  isActive: boolean;
 }

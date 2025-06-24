@@ -19,30 +19,37 @@ export class LoginPageComponent {
   loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
+    rememberMe: [false],
   });
 
   errorMessage: string | null = null;
 
   onSubmit() {
-    const { email = '', password = '' } = this.loginForm.value;
+    const {
+      email = '',
+      password = '',
+      rememberMe = false,
+    } = this.loginForm.value;
 
-    this.authService.loginUser(email!, password!).subscribe((res) => {
-      console.log(res);
+    this.authService
+      .loginUser(email!, password!, rememberMe!)
+      .subscribe((res) => {
+        console.log(res);
 
-      if (res === true) {
-        this.router.navigateByUrl('/dashboard');
-        return;
-      }
+        if (res === true) {
+          this.router.navigateByUrl('/dashboard');
+          return;
+        }
 
-      if (typeof res === 'string') {
-        this.errorMessage = res;
-      }
+        if (typeof res === 'string') {
+          this.errorMessage = res;
+        }
 
-      this.hasError.set(true);
-      setTimeout(() => {
-        this.hasError.set(false);
-        this.errorMessage = null;
-      }, 2000);
-    });
+        this.hasError.set(true);
+        setTimeout(() => {
+          this.hasError.set(false);
+          this.errorMessage = null;
+        }, 2000);
+      });
   }
 }

@@ -38,11 +38,16 @@ export class AuthService {
   token = computed(this._token);
   isAdmin = computed(() => this._user()?.role.includes('ADMIN_PTS') ?? false);
 
-  loginUser(email: string, password: string): Observable<boolean | string> {
+  loginUser(
+    email: string,
+    password: string,
+    rememberMe: boolean
+  ): Observable<boolean | string> {
     return this.http
       .post<AuthResponse>(`${baseUrl}/auth/login`, {
         email: email,
         password: password,
+        rememberMe: rememberMe,
       })
       .pipe(
         tap((res) => {

@@ -15,4 +15,11 @@ export class RoleService {
   getRoleLabel(role: string): string {
     return this.roleLabels[role] || role;
   }
+
+  getRoles(): { key: string; label: string }[] {
+    return Object.entries(this.roleLabels).map(([key, label]) => ({
+      key,
+      label,
+    }));
+  }
 }

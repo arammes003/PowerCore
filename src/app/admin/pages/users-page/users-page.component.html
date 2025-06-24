@@ -8,10 +8,18 @@
 
     <button
       class="ml-2 bg-secondary-500 text-text font-medium px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-secondary-600 transition ease-linear duration-150"
+      (click)="showModal = true"
     >
       Crear usuario
     </button>
   </article>
+
+  @if (showModal) {
+  <admin-create-user-modal
+    [showModal]="showModal"
+    (closeModal)="showModal = false"
+  />
+  }
 
   <article class="flex-1 overflow-y-auto px-5 pb-5">
     <admin-user-table [users]="userService.users()" />

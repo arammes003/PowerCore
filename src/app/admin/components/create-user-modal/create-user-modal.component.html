@@ -16,8 +16,40 @@
     <h2 class="text-xl font-semibold mb-4 text-text dark:text-white">
       Introduce los datos del usuario
     </h2>
+
+    <!-- FORM -->
     <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
-      <section class="flex gap-4 mb-4">
+      <section class="flex gap-4 mb-2">
+        <article class="flex-1">
+          <label
+            for="email"
+            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+            >Correo electrónico</label
+          >
+          <input
+            type="email"
+            formControlName="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            placeholder="Correo electrónico"
+          />
+        </article>
+
+        <article class="flex-1">
+          <label
+            for="phone"
+            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+            >Fecha de nacimiento</label
+          >
+          <input
+            type="date"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            formControlName="birth_date"
+          />
+        </article>
+      </section>
+
+      <!-- FILA 2 -->
+      <section class="flex gap-4 mb-2">
         <article class="flex-1">
           <label
             for="name"
@@ -48,48 +80,84 @@
         </article>
       </section>
 
-      <article class="mb-4">
-        <label
-          for="email"
-          class="block text-sm font-medium text-gray-900 dark:text-white mb-1"
-          >Correo electrónico</label
-        >
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-          placeholder="Correo electrónico"
-        />
-      </article>
+      <!-- FILA 3 -->
+      <section class="flex gap-4 mb-2">
+        <article class="flex-1">
+          <label
+            for="phone"
+            class="block mb-1 text-sm font-medium text-text dark:text-white"
+            >Teléfono</label
+          >
+          <input
+            type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            placeholder="683945049"
+            formControlName="phone"
+          />
+        </article>
 
-      <article class="mb-4">
-        <label
-          for="role"
-          class="block text-sm font-medium text-gray-900 dark:text-white mb-1"
-          >Tipo de usuario</label
-        >
-        @for (item of roleService.getRoles(); track item.key) {
-        <section class="flex items-start">
-          <article class="flex items-center h-5">
-            <input
-              type="checkbox"
-              class="w-4 h-4 cursor-pointer"
-              [id]="item.key"
-              [value]="item.key"
-              (change)="onRoleSelected($event, item.key)"
-            />
-          </article>
-          <div class="ml-3 text-sm">
-            <label
-              [for]="item.key"
-              class="text-gray-500 font-medium dark:text-gray-300 cursor-pointer"
-              >{{ item.label }}</label
-            >
-          </div>
-        </section>
-        }
-      </article>
+        <article class="flex-1">
+          <label
+            for="dni"
+            class="block mb-1 text-sm font-medium text-text dark:text-white"
+            >DNI</label
+          >
+          <input
+            type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            placeholder="19228170D"
+            formControlName="dni"
+          />
+        </article>
+      </section>
+
+      <!-- FILA 4 -->
+      <section class="flex gap-4 mb-2">
+        <article class="flex-1">
+          <label
+            for="role"
+            class="block text-sm font-medium text-gray-900 dark:text-white mb-1"
+            >Tipo de usuario</label
+          >
+          @for (item of roleService.getRoles(); track item.key) {
+          <section class="flex items-start">
+            <article class="flex items-center h-5">
+              <input
+                type="checkbox"
+                class="w-4 h-4 cursor-pointer"
+                [id]="item.key"
+                [value]="item.key"
+                (change)="onRoleSelected($event, item.key)"
+              />
+            </article>
+            <div class="ml-3 text-sm">
+              <label
+                [for]="item.key"
+                class="text-gray-500 font-medium dark:text-gray-300 cursor-pointer"
+                >{{ item.label }}</label
+              >
+            </div>
+          </section>
+          }
+        </article>
+
+        <article class="flex-1">
+          <label
+            for="gender"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Género</label
+          >
+          <select
+            formControlName="gender"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+          >
+            <option value="">Selecciona tu Genero</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+        </article>
+      </section>
+
       @if (hasError()) {
       <article class="flex justify-center items-center">
         <p class="text-error-500">{{ errorMessage }}</p>
@@ -104,6 +172,7 @@
       </button>
     </form>
   </div>
+
   @if(showSuccess()) {
   <div
     role="alert"

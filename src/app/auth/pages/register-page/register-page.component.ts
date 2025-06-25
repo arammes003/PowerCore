@@ -52,6 +52,7 @@ export class RegisterPageComponent {
     } = this.registerForm.value;
 
     const avatar = this.avatar;
+    console.log(avatar);
 
     if (password !== confirmPassword) {
       this.errorMessage = 'Las contraseñas no coinciden';

@@ -44,19 +44,27 @@ export class UserService {
 
   // CREACION USER
   createUser(
-    name: string,
     email: string,
+    birth_date: string,
+    name: string,
+    lastName: string,
+    phone: string,
+    dni: string,
     role: string[],
-    lastName: string
+    gender: string
   ): Observable<boolean | string> {
     return this.http
       .post<UserItem>(
         `${baseUrl}/users/create-user`,
         {
-          name: name,
           email: email,
-          role: role,
+          birth_date: birth_date,
+          name: name,
           lastName: lastName,
+          phone: phone,
+          dni: dni,
+          role: role,
+          gender: gender,
         },
         {
           headers: {

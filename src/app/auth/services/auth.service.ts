@@ -69,20 +69,22 @@ export class AuthService {
     gender: string,
     birthDate: string,
     dni: string,
-    avatar: File
+    avatar?: File
   ): Observable<boolean | string> {
+    const formData = new FormData();
+
+    formData.append('email', email);
+    formData.append('name', name);
+    formData.append('lastName', lastName);
+    formData.append('password', password);
+    formData.append('phone', phone);
+    formData.append('gender', gender);
+    formData.append('birthDate', birthDate);
+    formData.append('dni', dni);
+    if (avatar) formData.append('avatar', avatar);
+
     return this.http
-      .post<AuthResponse>(`${baseUrl}/auth/register`, {
-        name: name,
-        lastName: lastName,
-        email: email,
-        password: password,
-        phone: phone,
-        gender: gender,
-        birthDate: birthDate,
-        dni: dni,
-        avatar: avatar,
-      })
+      .post<AuthResponse>(`${baseUrl}/auth/register`, formData)
       .pipe(
         tap((res) => {
           this.handleAuthSuccess(res);

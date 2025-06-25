@@ -17,6 +17,8 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
+type Roles = (key: string, label: string) => [];
+
 @Component({
   selector: 'admin-create-user-modal',
   imports: [ReactiveFormsModule],
@@ -39,10 +41,14 @@ export class CreateUserModelComponent {
   showSuccess = signal(false);
 
   createUserForm = this.formBuilder.group({
+    email: ['', [Validators.required]],
+    birth_date: ['', Validators.required],
     name: ['', [Validators.required]],
     lastName: [''],
-    email: ['', [Validators.required]],
-    role: this.formBuilder.array([], [Validators.minLength(1)]), // El array y la validación
+    phone: ['', Validators.required],
+    dni: ['', Validators.required],
+    role: this.formBuilder.array([], [Validators.minLength(1)]),
+    gender: ['', Validators.required],
   });
 
   errorMessage: string | null = null;
@@ -61,16 +67,29 @@ export class CreateUserModelComponent {
 
   createUser() {
     const {
-      name = '',
       email = '',
-      role = [],
+      birth_date = '',
+      name = '',
       lastName = '',
+      phone = '',
+      dni = '',
+      role = [],
+      gender = '',
     } = this.createUserForm.value;
 
     const roleArray = role as string[];
 
     this.userService
-      .createUser(name!, email!, roleArray!, lastName!)
+      .createUser(
+        email!,
+        birth_date!,
+        name!,
+        lastName!,
+        phone!,
+        dni!,
+        roleArray!,
+        gender!
+      )
       .subscribe((res) => {
         if (res === true) {
           this.showSuccess.set(true);

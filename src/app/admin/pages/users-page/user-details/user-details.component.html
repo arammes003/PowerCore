@@ -1,0 +1,170 @@
+<main
+  class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50"
+>
+  <div
+    class="bg-white dark:bg-gray-800 p-6 rounded-lg w-[60%] h-fit shadow-lg relative flex flex-col"
+  >
+    <!-- Botón cerrar -->
+    <button
+      (click)="close()"
+      class="absolute top-4 right-4 text-error-500 hover:text-error-700 cursor-pointer text-2xl transition"
+      aria-label="Cerrar"
+    >
+      ✕
+    </button>
+
+    <h2 class="text-xl font-semibold mb-4 text-text dark:text-white">
+      Perfil de: {{ user().name }} {{ user().last_name ?? "" }}
+    </h2>
+
+    <section class="flex gap-4">
+      <!-- Imagen a la izquierda -->
+      <article class="flex-shrink-0" style="width: 260px">
+        <img
+          [src]="user().avatar"
+          [alt]="`${user().email} Avatar`"
+          class="rounded-3xl border-2 border-secondary-500 w-full object-cover aspect-square"
+        />
+      </article>
+
+      <!-- Inputs a la derecha, apilados verticalmente -->
+      <article class="flex-1 flex flex-col gap-4">
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label
+              for="nombre"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Nombre</label
+            >
+            <input
+              id="nombre"
+              type="text"
+              readonly
+              [value]="user().name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </div>
+          <div class="flex-1">
+            <label
+              for="apellidos"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Apellidos</label
+            >
+            <input
+              id="apellidos"
+              type="text"
+              readonly
+              [value]="user().last_name ?? ''"
+              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </div>
+        </div>
+        <!-- Más inputs debajo -->
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Correo electrónico</label
+            >
+            <input
+              id="email"
+              type="text"
+              readonly
+              [value]="user().email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </div>
+          <div class="flex-1">
+            <label
+              for="role"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Teléfono</label
+            >
+            <input
+              id="role"
+              type="text"
+              readonly
+              [value]="user().phone"
+              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </div>
+        </div>
+        <!-- Puedes seguir añadiendo más filas de inputs aquí -->
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Documento Nacional de Identidad (DNI)</label
+            >
+            <input
+              id="email"
+              type="text"
+              readonly
+              [value]="user().dni"
+              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </div>
+          <div class="flex-1">
+            <label
+              for="role"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Género</label
+            >
+            <input
+              id="role"
+              type="text"
+              readonly
+              [value]="user().gender"
+              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <div class="flex-1">
+              <label
+                for="role"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Tipo de usuario</label
+              >
+              <input
+                id="role"
+                type="text"
+                readonly
+                [value]="user().role"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+              />
+            </div>
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Estado de la cuenta</label
+            >
+            <input
+              type="checkbox"
+              [checked]="user().is_active"
+              class="toggle border-error-600 bg-error-500 text-error-800 checked:border-success-800 checked:bg-success-500 checked:text-success-800"
+            />
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="flex gap-4 w-full items-center justify-center">
+      <button
+        class="bg-secondary-500 hover:bg-secondary-600 text-text rounded p-2 w-30 font-semibold cursor-pointer transition ease-in"
+      >
+        Modificar
+      </button>
+
+      <button
+        class="bg-error-500 hover:bg-error-600 text-text rounded p-2 w-30 font-semibold cursor-pointer"
+      >
+        Eliminar
+      </button>
+    </section>
+  </div>
+</main>

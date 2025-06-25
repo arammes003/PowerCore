@@ -12,5 +12,8 @@ export interface UserItem {
   last_name?: string;
   password: string;
   role: string[];
+  gender: string;
+  dni: string;
+  phone: string;
   is_active: boolean;
 }

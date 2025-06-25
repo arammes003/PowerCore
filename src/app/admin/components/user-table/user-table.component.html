@@ -27,7 +27,7 @@
 
   <tbody class="divide-y divide-gray-200">
     @for (user of users(); track user) {
-    <tr>
+    <tr (click)="openUserModal(user)" class="cursor-pointer">
       <td class="px-6 py-4 flex items-center">
         <img
           class="w-10 h-10 rounded-lg mr-4 object-cover"
@@ -60,11 +60,19 @@
       <td class="px-6 py-4 text-gray-700 text-center">
         {{ user.created_at | date : "dd-MM-yyyy" }}
       </td>
-
+      <!-- 
       <td class="px-6 py-4 text-center">
         <a href="#" class="text-indigo-600 underline font-medium">Modificar</a>
-      </td>
+      </td> -->
     </tr>
     }
   </tbody>
 </table>
+
+@if (showModal && selectedUser){
+<modal-user-details
+  [showModal]="showModal"
+  (closeModal)="showModal = false"
+  [user]="selectedUser"
+/>
+}

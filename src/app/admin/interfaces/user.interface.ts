@@ -5,6 +5,9 @@ export interface User {
   email: string;
   name: string;
   last_name?: string;
+  dni: string;
+  phone: string;
+  gender: string;
   role: string[];
   is_active: boolean;
 }

@@ -12,6 +12,9 @@ export class UserMapper {
       created_at: user.created_at,
       avatar: user.avatar,
       is_active: user.is_active,
+      dni: user.dni,
+      phone: user.phone,
+      gender: user.gender,
     };
   }
 

@@ -4,6 +4,8 @@
       type="text"
       placeholder="Buscar usuario..."
       class="flex-1 bg-neutral-50/70 rounded-lg px-3 py-2 focus:outline-none focus:ring-0 focus:border-transparent placeholder:text-gray-600"
+      (input)="onSearch(txtSearch.value)"
+      #txtSearch
     />
 
     <button
@@ -22,6 +24,6 @@
   }
 
   <article class="flex-1 overflow-y-auto px-5 pb-5">
-    <admin-user-table [users]="userService.users()" />
+    <admin-user-table [users]="userService.filteredUsers()" />
   </article>
 </section>

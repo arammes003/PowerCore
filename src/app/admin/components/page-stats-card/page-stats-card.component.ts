@@ -18,7 +18,7 @@ export class PageStatsCardComponent {
     {
       title: 'Atletas Registrados',
       count: 7283,
-      icon: 'assets/icons/person-inactive.svg',
+      icon: 'assets/icons/dumbell-inactive.svg',
       increment: 18,
       message: 'respecto a la semana pasada',
     },

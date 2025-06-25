@@ -1,6 +1,6 @@
 // ANGULAR
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 
 //
 import { environment } from '@enviroments/environment';
@@ -21,6 +21,9 @@ export class UserService {
   users = signal<User[]>([]);
   usersLoading = signal(true);
 
+  // Signal para la query de búsqueda
+  searchQuery = signal('');
+
   constructor() {
     this.loadUsers();
   }
@@ -40,6 +43,23 @@ export class UserService {
         this.usersLoading.set(false);
         console.log({ users });
       });
+  }
+
+  // Signal computada para filtrado de usuarios
+  filteredUsers = computed(() => {
+    const query = this.searchQuery().toLowerCase().trim();
+    if (!query) return this.users();
+    return this.users().filter((user) => {
+      const fullName = `${user.name} ${user.last_name ?? ''}`.toLowerCase();
+      return (
+        fullName.includes(query) || user.email.toLowerCase().includes(query)
+      );
+    });
+  });
+
+  // Método que actualiza la query del filtro
+  setSearchQuery(query: string) {
+    this.searchQuery.set(query);
   }
 
   // CREACION USER

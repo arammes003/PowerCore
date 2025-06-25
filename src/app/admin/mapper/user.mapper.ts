@@ -6,12 +6,12 @@ export class UserMapper {
     return {
       _id: user._id,
       name: user.name,
-      lastName: user.lastName,
+      last_name: user.last_name,
       email: user.email,
       role: user.role,
-      createdAt: user.createdAt,
+      created_at: user.created_at,
       avatar: user.avatar,
-      isActive: user.isActive,
+      is_active: user.is_active,
     };
   }
 

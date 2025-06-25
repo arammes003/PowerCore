@@ -61,15 +61,27 @@ export class AuthService {
   }
 
   registerUser(
-    name: string,
     email: string,
-    password: string
+    name: string,
+    lastName: string,
+    password: string,
+    phone: string,
+    gender: string,
+    birthDate: string,
+    dni: string,
+    avatar: File
   ): Observable<boolean | string> {
     return this.http
       .post<AuthResponse>(`${baseUrl}/auth/register`, {
         name: name,
+        lastName: lastName,
         email: email,
         password: password,
+        phone: phone,
+        gender: gender,
+        birthDate: birthDate,
+        dni: dni,
+        avatar: avatar,
       })
       .pipe(
         tap((res) => {

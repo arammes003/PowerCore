@@ -8,8 +8,54 @@
   [formGroup]="registerForm"
   (ngSubmit)="onSubmit()"
 >
+  <!-- FILA 1 -->
   <section class="flex gap-4">
-    <div class="flex-1">
+    <article class="flex-1/4">
+      <label
+        for="email"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Correo electrónico</label
+      >
+      <input
+        type="email"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+        placeholder="alfonso@gmail.com"
+        formControlName="email"
+      />
+    </article>
+    <article class="flex-1">
+      <label
+        for="gender"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Género</label
+      >
+      <select
+        formControlName="gender"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+      >
+        <option value="">Selecciona tu Genero</option>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
+      </select>
+    </article>
+
+    <article class="flex-1">
+      <label
+        for="birthdate"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Fecha de nacimiento</label
+      >
+      <input
+        type="date"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+        formControlName="birth_date"
+      />
+    </article>
+  </section>
+
+  <!-- FILA 2 -->
+  <section class="flex gap-4">
+    <article class="flex-1">
       <label
         for="name"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -22,8 +68,9 @@
         placeholder="Alfonso"
         formControlName="name"
       />
-    </div>
-    <div class="flex-1">
+    </article>
+
+    <article class="flex-1">
       <label
         for="lastName"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -34,25 +81,28 @@
         id="lastName"
         class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
         placeholder="Ramírez Mestanza"
-        formControlName="lastName"
+        formControlName="last_name"
       />
-    </div>
+    </article>
+
+    <article class="flex-1">
+      <label
+        for="dni"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >DNI</label
+      >
+      <input
+        type="text"
+        placeholder="40394576K"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+        formControlName="dni"
+      />
+    </article>
   </section>
-  <section>
-    <label
-      for="email"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >Correo electrónico</label
-    >
-    <input
-      type="email"
-      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
-      placeholder="name@company.com"
-      formControlName="email"
-    />
-  </section>
+
+  <!-- FILA 3 -->
   <section class="flex gap-4">
-    <div class="flex-1">
+    <article class="flex-1">
       <label
         for="password"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -64,8 +114,8 @@
         class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
         formControlName="password"
       />
-    </div>
-    <div class="flex-1">
+    </article>
+    <article class="flex-1">
       <label
         for="password"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -77,24 +127,39 @@
         class="bg-gray-50 border border-neutral-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         formControlName="confirmPassword"
       />
-    </div>
+    </article>
+
+    <article class="flex-1">
+      <label
+        for="phone"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Teléfono</label
+      >
+      <input
+        type="tel"
+        placeholder="689347568"
+        class="bg-gray-50 border border-neutral-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        formControlName="phone"
+      />
+    </article>
   </section>
 
-  <section>
-    <div class="flex-1">
+  <section class="flex gap-4">
+    <article class="flex-1">
       <label
         for="avatar"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >Avatar</label
       >
       <input
+        (change)="onAvatarSelected($event)"
         type="file"
         id="avatar"
         name="avatar"
         accept="image/*"
         class="cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
       />
-    </div>
+    </article>
   </section>
 
   <button

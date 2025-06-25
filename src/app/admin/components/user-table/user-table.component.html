@@ -36,7 +36,7 @@
         />
         <div>
           <div class="font-semibold text-gray-900">
-            {{ user.name }} {{ user.lastName }}
+            {{ user.name }} {{ user.last_name }}
           </div>
           <div class="text-sm text-gray-500">{{ user.email }}</div>
         </div>
@@ -51,14 +51,14 @@
       <td class="px-6 py-4 text-center">
         <p
           class="inline-block px-3 py-1 text-xs font-bold rounded text-white"
-          [class]="user.isActive ? 'bg-success-800' : 'bg-error-800'"
+          [class]="user.is_active ? 'bg-success-800' : 'bg-error-800'"
         >
-          {{ user.isActive ? "ACTIVO" : "INACTIVO" }}
+          {{ user.is_active ? "ACTIVO" : "INACTIVO" }}
         </p>
       </td>
 
       <td class="px-6 py-4 text-gray-700 text-center">
-        {{ user.createdAt | date : "dd-MM-yyyy" }}
+        {{ user.created_at | date : "dd-MM-yyyy" }}
       </td>
 
       <td class="px-6 py-4 text-center">

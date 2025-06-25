@@ -17,21 +17,41 @@ export class RegisterPageComponent {
   authService = inject(AuthService);
 
   registerForm = this.formBuilder.group({
-    name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    gender: ['', Validators.required],
+    name: ['', [Validators.required]],
+    last_name: [''],
+    password: ['', [Validators.required]],
     confirmPassword: ['', Validators.required],
+    birth_date: ['', Validators.required],
+    phone: ['', Validators.required],
+    dni: ['', Validators.required],
   });
 
   errorMessage: string | null = null;
+  avatar: File | null = null;
+
+  onAvatarSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.avatar = input.files[0];
+    }
+  }
 
   onSubmit() {
     const {
-      name = '',
       email = '',
+      gender = '',
+      name = '',
+      last_name = '',
       password = '',
       confirmPassword = '',
+      birth_date = '',
+      phone = '',
+      dni = '',
     } = this.registerForm.value;
+
+    const avatar = this.avatar;
 
     if (password !== confirmPassword) {
       this.errorMessage = 'Las contraseñas no coinciden';
@@ -43,23 +63,35 @@ export class RegisterPageComponent {
       return;
     }
 
-    this.authService.registerUser(name!, email!, password!).subscribe((res) => {
-      console.log(res);
+    this.authService
+      .registerUser(
+        email!,
+        name!,
+        last_name!,
+        password!,
+        phone!,
+        gender!,
+        birth_date!,
+        dni!,
+        avatar!
+      )
+      .subscribe((res) => {
+        console.log(res);
 
-      if (res === true) {
-        this.router.navigateByUrl('/auth/login');
-        return;
-      }
+        if (res === true) {
+          this.router.navigateByUrl('/auth/login');
+          return;
+        }
 
-      if (typeof res === 'string') {
-        this.errorMessage = res;
-      }
+        if (typeof res === 'string') {
+          this.errorMessage = res;
+        }
 
-      this.hasError.set(true);
-      setTimeout(() => {
-        this.hasError.set(false);
-        this.errorMessage = null;
-      }, 2000);
-    });
+        this.hasError.set(true);
+        setTimeout(() => {
+          this.hasError.set(false);
+          this.errorMessage = null;
+        }, 2000);
+      });
   }
 }

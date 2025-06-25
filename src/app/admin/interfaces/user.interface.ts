@@ -1,10 +1,10 @@
 export interface User {
   _id: string;
   avatar?: string;
-  createdAt: Date;
+  created_at: Date;
   email: string;
   name: string;
-  lastName?: string;
+  last_name?: string;
   role: string[];
-  isActive: boolean;
+  is_active: boolean;
 }

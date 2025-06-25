@@ -1,4 +1,6 @@
-<div class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+<div
+  class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50"
+>
   <div
     class="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-md shadow-lg relative"
   >
@@ -14,7 +16,7 @@
     <h2 class="text-xl font-semibold mb-4 text-text dark:text-white">
       Introduce los datos del usuario
     </h2>
-    <form>
+    <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
       <section class="flex gap-4 mb-4">
         <article class="flex-1">
           <label
@@ -71,15 +73,16 @@
         <section class="flex items-start">
           <article class="flex items-center h-5">
             <input
-              id="remember"
-              aria-describedby="remember"
               type="checkbox"
               class="w-4 h-4 cursor-pointer"
+              [id]="item.key"
+              [value]="item.key"
+              (change)="onRoleSelected($event, item.key)"
             />
           </article>
           <div class="ml-3 text-sm">
             <label
-              for="remember"
+              [for]="item.key"
               class="text-gray-500 font-medium dark:text-gray-300 cursor-pointer"
               >{{ item.label }}</label
             >
@@ -87,6 +90,11 @@
         </section>
         }
       </article>
+      @if (hasError()) {
+      <article class="flex justify-center items-center">
+        <p class="text-error-500">{{ errorMessage }}</p>
+      </article>
+      }
 
       <button
         type="submit"
@@ -96,4 +104,25 @@
       </button>
     </form>
   </div>
+  @if(showSuccess()) {
+  <div
+    role="alert"
+    class="alert bg-success-700 text-text font-semibold flex items-center gap-2 mt-4 transition"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 shrink-0 stroke-current"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+    <span>Usuario creado correctamente!</span>
+  </div>
+  }
 </div>

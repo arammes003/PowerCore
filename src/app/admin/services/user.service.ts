@@ -4,9 +4,13 @@ import { inject, Injectable, signal } from '@angular/core';
 
 //
 import { environment } from '@enviroments/environment';
-import type { UsersResponse } from '../interfaces/user.interfaces';
+import type { UserItem, UsersResponse } from '../interfaces/user.interfaces';
 import { UserMapper } from '../mapper/user.mapper';
 import { User } from '../interfaces/user.interface';
+import { FormBuilder, Validators } from '@angular/forms';
+import { catchError, map, Observable, of, tap } from 'rxjs';
+
+const baseUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +25,7 @@ export class UserService {
     this.loadUsers();
   }
 
-  token = localStorage.getItem('token');
+  private token = localStorage.getItem('token');
 
   loadUsers() {
     this.http
@@ -36,5 +40,46 @@ export class UserService {
         this.usersLoading.set(false);
         console.log({ users });
       });
+  }
+
+  // CREACION USER
+  createUser(
+    name: string,
+    email: string,
+    role: string[],
+    lastName: string
+  ): Observable<boolean | string> {
+    return this.http
+      .post<UserItem>(
+        `${baseUrl}/users/create-user`,
+        {
+          name: name,
+          email: email,
+          role: role,
+          lastName: lastName,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      )
+      .pipe(
+        tap((res) => {
+          console.log('hola');
+        }),
+        map(() => true),
+        catchError((error: any) => {
+          return this.handleAuthError(error);
+        })
+      );
+  }
+
+  private handleAuthError(error: any) {
+    const errorMessage = error?.error;
+    if (errorMessage) {
+      return of(errorMessage.error);
+    }
+    return of(errorMessage);
   }
 }

@@ -1,10 +1,15 @@
 // ANGULAR
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
+import Swal from 'sweetalert2';
 
 //
 import { environment } from '@enviroments/environment';
-import type { UserItem, UsersResponse } from '../interfaces/user.interfaces';
+import {
+  DeleteUserResponse,
+  type UserItem,
+  type UsersResponse,
+} from '../interfaces/user.interfaces';
 import { UserMapper } from '../mapper/user.mapper';
 import { User } from '../interfaces/user.interface';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -93,9 +98,22 @@ export class UserService {
         }
       )
       .pipe(
-        tap((res) => {
-          console.log('hola');
-        }),
+        map(() => true),
+        catchError((error: any) => {
+          return this.handleAuthError(error);
+        })
+      );
+  }
+
+  // ELIMINACION USER
+  deleteUser(id: string): Observable<boolean | string> {
+    return this.http
+      .delete<DeleteUserResponse>(`${baseUrl}/users/delete-user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(
         map(() => true),
         catchError((error: any) => {
           return this.handleAuthError(error);

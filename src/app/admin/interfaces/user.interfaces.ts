@@ -2,6 +2,10 @@ export interface UsersResponse {
   users: UserItem[];
 }
 
+export interface DeleteUserResponse {
+  message: string;
+}
+
 export interface UserItem {
   __v: number;
   _id: string;

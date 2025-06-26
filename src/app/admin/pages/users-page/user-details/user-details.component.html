@@ -1,39 +1,39 @@
 <main
-  class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50"
+  class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50 dark:text-white text-text"
 >
-  <div
-    class="bg-white dark:bg-gray-800 p-6 rounded-lg w-[60%] h-fit shadow-lg relative flex flex-col"
+  <section
+    class="bg-lightText dark:bg-gray-800 p-6 rounded-lg w-[60%] h-fit shadow-lg relative flex flex-col"
   >
     <!-- Botón cerrar -->
     <button
       (click)="close()"
       class="absolute top-4 right-4 text-error-500 hover:text-error-700 cursor-pointer text-2xl transition"
-      aria-label="Cerrar"
     >
       ✕
     </button>
 
-    <h2 class="text-xl font-semibold mb-4 text-text dark:text-white">
-      Perfil de: {{ user().name }} {{ user().last_name ?? "" }}
+    <h2 class="text-xl font-semibold mb-4">
+      Perfil de {{ user().name }} {{ user().last_name ?? "" }}
     </h2>
 
     <section class="flex gap-4">
-      <!-- Imagen a la izquierda -->
-      <article class="flex-shrink-0" style="width: 260px">
+      <!-- IMAGEN IZQUIERDA-->
+      <article class="flex-shrink-0 w-[260px]">
         <img
-          [src]="user().avatar"
+          [src]="
+            user().avatar ? user().avatar : 'assets/images/user-default.avif'
+          "
           [alt]="`${user().email} Avatar`"
           class="rounded-3xl border-2 border-secondary-500 w-full object-cover aspect-square"
         />
       </article>
 
-      <!-- Inputs a la derecha, apilados verticalmente -->
-      <article class="flex-1 flex flex-col gap-4">
-        <div class="flex gap-4">
-          <div class="flex-1">
-            <label
-              for="nombre"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      <!-- INPUTS DERECHA -->
+      <section class="flex-1 flex flex-col gap-4">
+        <!-- 1 FILA -->
+        <section class="flex gap-4">
+          <article class="flex-1">
+            <label for="nombre" class="block mb-2 text-sm font-medium"
               >Nombre</label
             >
             <input
@@ -41,30 +41,26 @@
               type="text"
               readonly
               [value]="user().name"
-              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-lightText dark:focus:border-secondary-500"
             />
-          </div>
-          <div class="flex-1">
-            <label
-              for="apellidos"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          </article>
+          <article class="flex-1">
+            <label for="apellidos" class="block mb-2 text-sm font-medium"
               >Apellidos</label
             >
             <input
               id="apellidos"
               type="text"
-              readonly
               [value]="user().last_name ?? ''"
-              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
             />
-          </div>
-        </div>
-        <!-- Más inputs debajo -->
-        <div class="flex gap-4">
-          <div class="flex-1">
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          </article>
+        </section>
+
+        <!-- 2 FILA -->
+        <section class="flex gap-4">
+          <article class="flex-1">
+            <label for="email" class="block mb-2 text-sm font-medium"
               >Correo electrónico</label
             >
             <input
@@ -72,13 +68,11 @@
               type="text"
               readonly
               [value]="user().email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
             />
-          </div>
-          <div class="flex-1">
-            <label
-              for="role"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          </article>
+          <article class="flex-1">
+            <label for="role" class="block mb-2 text-sm font-medium"
               >Teléfono</label
             >
             <input
@@ -86,16 +80,15 @@
               type="text"
               readonly
               [value]="user().phone"
-              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
             />
-          </div>
-        </div>
-        <!-- Puedes seguir añadiendo más filas de inputs aquí -->
-        <div class="flex gap-4">
-          <div class="flex-1">
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          </article>
+        </section>
+
+        <!-- 3 FILA -->
+        <section class="flex gap-4">
+          <article class="flex-1">
+            <label for="email" class="block mb-2 text-sm font-medium"
               >Documento Nacional de Identidad (DNI)</label
             >
             <input
@@ -103,13 +96,11 @@
               type="text"
               readonly
               [value]="user().dni"
-              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
             />
-          </div>
-          <div class="flex-1">
-            <label
-              for="role"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          </article>
+          <article class="flex-1">
+            <label for="role" class="block mb-2 text-sm font-medium"
               >Género</label
             >
             <input
@@ -117,42 +108,62 @@
               type="text"
               readonly
               [value]="user().gender"
-              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
             />
-          </div>
-        </div>
+          </article>
+        </section>
 
-        <div class="flex gap-4">
-          <div class="flex-1">
-            <div class="flex-1">
-              <label
-                for="role"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Tipo de usuario</label
+        <!-- 4 FILA -->
+        <section class="flex gap-4 mb-5">
+          <article class="flex-1/2">
+            <div class="">
+              <label for="created_at" class="block mb-2 text-sm font-medium"
+                >Fecha de nacimiento</label
               >
               <input
-                id="role"
+                id="created_at"
                 type="text"
                 readonly
-                [value]="user().role"
-                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+                [value]="user().birth_date | date : 'dd/MM/yyyy'"
+                class="mb-4 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
             </div>
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Estado de la cuenta</label
+
+            <label for="email" class="block mb-2 text-sm font-medium"
+              >Estado</label
             >
             <input
               type="checkbox"
               [checked]="user().is_active"
               class="toggle border-error-600 bg-error-500 text-error-800 checked:border-success-800 checked:bg-success-500 checked:text-success-800"
             />
-          </div>
-        </div>
-      </article>
+          </article>
+          <article class="flex-1/2">
+            <label for="role" class="block mb-2 text-sm font-medium"
+              >Tipo de usuario</label
+            >
+            @for (role of roleService.getRoles(); track role.key) {
+            <section class="flex items-start">
+              <article class="flex items-center py-1">
+                <input
+                  type="checkbox"
+                  [checked]="user().role.includes(role.key)"
+                  class="accent-secondary-500 w-4 h-4"
+                />
+              </article>
+              <div class="ml-3 text-sm">
+                <label [for]="role.key" class="font-medium cursor-pointer">{{
+                  role.label
+                }}</label>
+              </div>
+            </section>
+            }
+          </article>
+        </section>
+      </section>
     </section>
 
+    <!-- BOTONES -->
     <section class="flex gap-4 w-full items-center justify-center">
       <button
         class="bg-secondary-500 hover:bg-secondary-600 text-text rounded p-2 w-30 font-semibold cursor-pointer transition ease-in"
@@ -166,5 +177,5 @@
         Eliminar
       </button>
     </section>
-  </div>
+  </section>
 </main>

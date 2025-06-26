@@ -10,6 +10,7 @@ export class UserMapper {
       email: user.email,
       role: user.role,
       created_at: user.created_at,
+      birth_date: user.birth_date,
       avatar: user.avatar,
       is_active: user.is_active,
       dni: user.dni,

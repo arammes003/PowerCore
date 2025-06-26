@@ -9,6 +9,7 @@ export interface UserItem {
   created_at: Date;
   email: string;
   name: string;
+  birth_date: Date;
   last_name?: string;
   password: string;
   role: string[];

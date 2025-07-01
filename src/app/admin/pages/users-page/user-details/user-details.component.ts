@@ -12,11 +12,10 @@ import { User } from 'src/app/admin/interfaces/user.interface';
 import { RoleService } from 'src/app/admin/services/role.service';
 import { UserService } from '../../../services/user.service';
 import Swal from 'sweetalert2';
-import { AlertComponent } from 'src/app/shared/components/alert-component/alert.component';
 
 @Component({
   selector: 'modal-user-details',
-  imports: [DatePipe, AlertComponent],
+  imports: [DatePipe],
   templateUrl: './user-details.component.html',
 })
 export class UserDetailsComponent {

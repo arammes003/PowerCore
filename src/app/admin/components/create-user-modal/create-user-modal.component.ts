@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  HostListener,
   inject,
   Input,
   Output,
@@ -30,6 +31,11 @@ export class CreateUserModelComponent {
 
   @Input() showModal!: boolean;
   @Output() closeModal = new EventEmitter<void>();
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event: Event) {
+    if (event instanceof KeyboardEvent) this.close();
+  }
 
   close() {
     this.closeModal.emit();

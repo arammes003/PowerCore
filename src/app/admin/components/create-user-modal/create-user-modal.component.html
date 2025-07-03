@@ -1,5 +1,9 @@
 <main
   class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50"
+  tabindex="0"
+  role="dialog"
+  aria-modal="true"
+  (keydown.esc)="close()"
 >
   <section
     class="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-md shadow-lg relative"

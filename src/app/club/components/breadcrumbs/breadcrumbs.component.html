@@ -1,0 +1,15 @@
+<nav class="flex text-slate-400 text-sm mb-6" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    @for (crumb of breadcrumbs; track crumb.route) {
+    <li class="inline-flex items-center hover:cursor-pointer">
+      <p class="inline-flex items-center" [routerLink]="crumb.route">
+        Dashboard
+      </p>
+    </li>
+    <p>/</p>
+    <li class="inline-flex items-center">
+      <p class="text-text">{{ crumb.label }}</p>
+    </li>
+    }
+  </ol>
+</nav>

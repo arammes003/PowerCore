@@ -37,6 +37,7 @@ export class AuthService {
   user = computed<User | null>(() => this._user());
   token = computed(this._token);
   isAdmin = computed(() => this._user()?.role.includes('ADMIN_PTS') ?? false);
+  isClub = computed(() => this._user()?.role.includes('CLUB_ROLE') ?? false);
 
   loginUser(
     email: string,

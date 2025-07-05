@@ -1,5 +1,9 @@
 <main
   class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50"
+  tabindex="0"
+  role="dialog"
+  aria-modal="true"
+  (keydown.esc)="close()"
 >
   <section
     class="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-md shadow-lg relative"
@@ -7,8 +11,7 @@
     <!-- Botón cerrar -->
     <button
       (click)="close()"
-      class="absolute top-4 right-4 text-gray-500 hover:text-gray-300 cursor-pointer"
-      aria-label="Cerrar"
+      class="absolute top-4 right-4 text-error-500 hover:text-error-700 cursor-pointer text-2xl transition"
     >
       ✕
     </button>
@@ -120,11 +123,11 @@
             >Tipo de usuario</label
           >
           @for (item of roleService.getRoles(); track item.key) {
-          <section class="flex items-start">
+          <section class="flex items-start cursor-pointer">
             <article class="flex items-center h-5">
               <input
                 type="checkbox"
-                class="w-4 h-4 cursor-pointer"
+                class="accent-secondary-500 w-4 h-4"
                 [id]="item.key"
                 [value]="item.key"
                 (change)="onRoleSelected($event, item.key)"

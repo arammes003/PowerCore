@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  HostListener,
   inject,
   Input,
   Output,
@@ -16,13 +17,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { AlertComponent } from 'src/app/shared/components/alert-component/alert.component';
+// import { AlertComponent } from 'src/app/shared/components/alert-component/alert.component';
 
 type Roles = (key: string, label: string) => [];
 
 @Component({
   selector: 'admin-create-user-modal',
-  imports: [ReactiveFormsModule, AlertComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './create-user-modal.component.html',
 })
 export class CreateUserModelComponent {
@@ -30,6 +31,11 @@ export class CreateUserModelComponent {
 
   @Input() showModal!: boolean;
   @Output() closeModal = new EventEmitter<void>();
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event: Event) {
+    if (event instanceof KeyboardEvent) this.close();
+  }
 
   close() {
     this.closeModal.emit();

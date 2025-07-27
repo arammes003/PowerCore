@@ -1,0 +1,80 @@
+<section class="grid grid-cols-4 flex-1/4 gap-4 md:grid-cols-3">
+  @for (club of clubs(); track club._id) {
+  <section
+    class="bg-white rounded-xl shadow-md p-5 w-full border border-gray-200 relative"
+  >
+    <!-- Encabezado -->
+    <article
+      class="rounded-full pb-2 flex items-center justify-center text-2xl text-gray-500"
+    >
+      <img [src]="club.club_logo" alt="Club logo" class="rounded-3xl w-20" />
+    </article>
+
+    <article class="flex items-center justify-center w-full">
+      <div class="flex flex-col items-center text-center w-full">
+        <h2 class="font-semibold text-lg text-gray-900">
+          {{ club.name }}
+        </h2>
+        <p class="text-sm text-gray-500">
+          {{ club.city_name }}, {{ club.prov_name }}, {{ club.ac_name }}
+        </p>
+      </div>
+    </article>
+
+    <!-- Info adicional -->
+    <div class="mt-4 space-y-1 text-sm text-gray-600">
+      <div class="flex items-center gap-1">
+        <img src="assets/icons/person.svg" alt="Club Icon" class="w-4 h-4" />
+        <p>Fundador: {{ club.admin.name }} {{ club.admin.last_name }}</p>
+      </div>
+      <div class="flex items-center gap-1">
+        <img src="assets/icons/date.svg" alt="Club Icon" class="w-4 h-4" />
+        <p>Fundado: {{ club.created_at | date : "dd/MM/yyyy" }}</p>
+      </div>
+    </div>
+
+    <!-- Métricas -->
+    <div class="flex gap-4 mt-4">
+      <div
+        class="flex-1 flex flex-col bg-blue-100 rounded-lg p-2 text-center items-center"
+      >
+        <img
+          src="assets/icons/club-card-trophy.svg"
+          alt="Total Icon"
+          class="w-6 items-center"
+        />
+        <p class="text-blue-600 font-bold text-xl">
+          {{ club.competitions.length }}
+        </p>
+        <p class="text-sm text-gray-500 font-semibold">Competiciones</p>
+      </div>
+      <div
+        class="flex-1 flex flex-col bg-green-100 rounded-lg p-2 text-center items-center"
+      >
+        <img
+          src="assets/icons/club-card-coach.svg"
+          alt="Trophy Icon"
+          class="w-6 items-center"
+        />
+
+        <p class="text-green-600 font-bold text-xl">
+          {{ club.coaches.length }}
+        </p>
+        <p class="text-sm text-gray-500 font-semibold">Entrenadores</p>
+      </div>
+    </div>
+    <div
+      class="flex flex-col bg-orange-100 rounded-lg mt-4 p-2 text-center items-center"
+    >
+      <img
+        src="assets/icons/club-card-athlete.svg"
+        alt="Trophy Icon"
+        class="w-6 items-center"
+      />
+
+      <p class="text-[#e97936] font-bold text-xl">{{ club.athletes.length }}</p>
+      <p class="text-sm text-gray-500 font-semibold">Atletas</p>
+    </div>
+  </section>
+  }
+</section>

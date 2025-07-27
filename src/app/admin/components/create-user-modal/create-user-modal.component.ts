@@ -17,7 +17,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-// import { AlertComponent } from 'src/app/shared/components/alert-component/alert.component';
 
 type Roles = (key: string, label: string) => [];
 

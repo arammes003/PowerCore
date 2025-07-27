@@ -1,3 +1,80 @@
 <div class="flex flex-wrap gap-x-10 gap-y-6 w-full">
   <admin-page-stats-card />
 </div>
+
+<aside class="bg-white rounded-lg shadow px-6 py-6 flex flex-col gap-2">
+  <h3 class="text-lg font-bold text-gray-800 mb-2">Últimos movimientos</h3>
+  <span class="text-sm text-gray-400 mb-4">Actualizados hoy</span>
+  <ul class="space-y-4">
+    <li class="flex items-start gap-3">
+      <span class="inline-block mt-1 text-green-500">
+        <!-- Icono ejemplo; puedes usar Heroicons, SVG, etc. -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 17v-6h6v6m2 4H7a2 2 0 01-2-2V7a2 2 0 012-2h5.5a1.5 1.5 0 011.5 1.5V9h2.5A1.5 1.5 0 0118 10.5V19a2 2 0 01-2 2z"
+          />
+        </svg>
+      </span>
+      <div>
+        <span class="text-gray-700 font-medium">Entrenamiento registrado</span>
+        <div class="text-xs text-gray-400">Juan Pérez - 20 Jun 2025, 16:40</div>
+      </div>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="inline-block mt-1 text-blue-500">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 12h2a2 2 0 002-2V7a2 2 0 00-2-2h-2m-6 0H7a2 2 0 00-2 2v3a2 2 0 002 2h2m6 0v7m-6 0v-7"
+          />
+        </svg>
+      </span>
+      <div>
+        <span class="text-gray-700 font-medium">Nuevo atleta agregado</span>
+        <div class="text-xs text-gray-400">Ana Gómez - 20 Jun 2025, 15:22</div>
+      </div>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="inline-block mt-1 text-red-500">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M18.364 5.636l-1.414 1.414M6.343 17.657l-1.415-1.414M6.343 6.343l1.414-1.414m10.607 10.607l1.414 1.414M12 8v4l3 3"
+          />
+        </svg>
+      </span>
+      <div>
+        <span class="text-gray-700 font-medium">Lesión reportada</span>
+        <div class="text-xs text-gray-400">
+          Carlos Ruiz - 19 Jun 2025, 18:05
+        </div>
+      </div>
+    </li>
+    <!-- ...más movimientos -->
+  </ul>
+</aside>

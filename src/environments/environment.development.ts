@@ -3,5 +3,5 @@ export const environment = {
   companyName2: 'Core',
   companySlogan: 'Controla el Powerlifting',
 
-  apiUrl: 'https://power-core-backend.onrender.com/api',
+  apiUrl: 'http://localhost:3100/api',
 };

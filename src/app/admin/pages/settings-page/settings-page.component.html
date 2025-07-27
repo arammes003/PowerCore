@@ -1,1 +1,144 @@
-<p>settings-page works!</p>,
+<main>
+  <section>
+    <section class="flex gap-4">
+      <!-- IMAGEN IZQUIERDA-->
+      <article class="flex-shrink-0 w-[260px]">
+        <img
+          [src]=""
+          class="rounded-3xl border-2 border-secondary-500 w-full object-cover aspect-square"
+        />
+      </article>
+
+      <!-- INPUTS DERECHA -->
+      <section class="flex-1 flex flex-col gap-4">
+        <!-- 1 FILA -->
+        <section class="flex gap-4">
+          <article class="flex-1">
+            <label for="nombre" class="block mb-2 text-sm font-medium"
+              >Nombre</label
+            >
+            <input
+              id="nombre"
+              type="text"
+              readonly
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-lightText dark:focus:border-secondary-500"
+            />
+          </article>
+          <article class="flex-1">
+            <label for="apellidos" class="block mb-2 text-sm font-medium"
+              >Apellidos</label
+            >
+            <input
+              id="apellidos"
+              type="text"
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            />
+          </article>
+        </section>
+
+        <!-- 2 FILA -->
+        <section class="flex gap-4">
+          <article class="flex-1">
+            <label for="email" class="block mb-2 text-sm font-medium"
+              >Correo electrónico</label
+            >
+            <input
+              id="email"
+              type="text"
+              readonly
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </article>
+          <article class="flex-1">
+            <label for="role" class="block mb-2 text-sm font-medium"
+              >Teléfono</label
+            >
+            <input
+              id="role"
+              type="text"
+              readonly
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </article>
+        </section>
+
+        <!-- 3 FILA -->
+        <section class="flex gap-4">
+          <article class="flex-1">
+            <label for="email" class="block mb-2 text-sm font-medium"
+              >Documento Nacional de Identidad (DNI)</label
+            >
+            <input
+              id="email"
+              type="text"
+              readonly
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </article>
+          <article class="flex-1">
+            <label for="role" class="block mb-2 text-sm font-medium"
+              >Género</label
+            >
+            <input
+              id="role"
+              type="text"
+              readonly
+              class="bg-gray-50 border border-gray-300 text-text rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-secondary-500"
+            />
+          </article>
+        </section>
+
+        <!-- 4 FILA -->
+        <section class="flex gap-4 mb-5">
+          <article class="flex-1/2">
+            <div class="">
+              <label for="created_at" class="block mb-2 text-sm font-medium"
+                >Fecha de nacimiento</label
+              >
+              <input
+                id="created_at"
+                type="text"
+                readonly
+                class="mb-4 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              />
+            </div>
+
+            <label for="email" class="block mb-2 text-sm font-medium"
+              >Estado</label
+            >
+            <input
+              type="checkbox"
+              class="toggle border-error-600 bg-error-500 text-error-800 checked:border-success-800 checked:bg-success-500 checked:text-success-800"
+            />
+          </article>
+          <article class="flex-1/2">
+            <label for="role" class="block mb-2 text-sm font-medium"
+              >Tipo de usuario</label
+            >
+            <section class="flex items-start">
+              <article class="flex items-center py-1">
+                <input type="checkbox" class="accent-secondary-500 w-4 h-4" />
+              </article>
+              <div class="ml-3 text-sm"></div>
+            </section>
+          </article>
+        </section>
+      </section>
+    </section>
+
+    <!-- BOTONES -->
+    <section class="flex gap-4 w-full items-center justify-center">
+      <button
+        class="bg-secondary-500 hover:bg-secondary-600 text-text rounded p-2 w-30 font-semibold cursor-pointer transition ease-in"
+      >
+        Modificar
+      </button>
+
+      <button
+        class="bg-error-500 hover:bg-error-300 text-text rounded p-2 w-30 font-semibold cursor-pointer"
+      >
+        Eliminar
+      </button>
+    </section>
+  </section>
+</main>

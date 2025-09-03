@@ -116,6 +116,13 @@ export const routes: Routes = [
     ],
   },
 
+  // Test route for geographic data extraction
+  {
+    path: 'test-geographic',
+    loadComponent: () =>
+      import('./shared/components/geographic-test.component').then(m => m.GeographicTestComponent),
+  },
+
   {
     path: '**',
     redirectTo: '',

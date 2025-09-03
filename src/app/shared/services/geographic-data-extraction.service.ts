@@ -177,16 +177,23 @@ export class GeographicDataExtractionService {
     
     // Keywords that indicate temporary/non-personal locations
     const temporaryKeywords = [
-      'trabajo', 'trabajo en', 'trabajo a', 'eventos', 'estudié', 'estudios',
+      'trabajo en', 'trabajo a', 'eventos', 'estudié', 'estudios',
       'viajo', 'viajes', 'vacaciones', 'temporalmente', 'sitios como',
-      'trabajo remoto', 'a menudo'
+      'a menudo', 'estudié en'
     ];
 
     // Keywords that indicate personal/residential locations
     const personalKeywords = [
       'vivo', 'resido', 'residencia', 'nací', 'origen', 'habitual',
-      'desde hace años', 'mi casa', 'mi hogar', 'domicilio'
+      'desde hace años', 'mi casa', 'mi hogar', 'domicilio', 'trabajo remoto desde'
     ];
+
+    // If the current residence is mentioned as ambiguous ("zona centro"), treat it as invalid
+    if (lowerText.includes('resido en la zona centro') || 
+        lowerText.includes('vivo en la zona centro') ||
+        lowerText.includes('zona centro')) {
+      return [];
+    }
 
     // If text contains clear personal indicators, keep all mentions
     const hasPersonalIndicators = personalKeywords.some(keyword => 
@@ -226,17 +233,24 @@ export class GeographicDataExtractionService {
 
     // Prioritize based on context
     // 1. Current residence indicators - check exact phrasing
-    if (lowerText.includes('vivo en')) {
-      // Extract what comes after "vivo en"
-      const vivoEnMatch = lowerText.match(/vivo en ([^,\.]+)/);
-      if (vivoEnMatch) {
-        const locationAfterVivoEn = vivoEnMatch[1].trim();
-        
-        // Check if any mention matches what comes after "vivo en"
-        for (const mention of mentions) {
-          if (locationAfterVivoEn.includes(mention.toLowerCase()) || 
-              locationAfterVivoEn.includes('capital') && mention.toLowerCase() === 'logroño') {
-            return mention;
+    if (lowerText.includes('vivo en') || lowerText.includes('trabajo remoto desde')) {
+      // Extract what comes after "vivo en" or "trabajo remoto desde"
+      const patterns = [
+        /vivo en ([^,\.]+)/,
+        /trabajo remoto desde ([^,\.]+)/
+      ];
+      
+      for (const pattern of patterns) {
+        const match = lowerText.match(pattern);
+        if (match) {
+          const locationAfterPattern = match[1].trim();
+          
+          // Check if any mention matches what comes after the pattern
+          for (const mention of mentions) {
+            if (locationAfterPattern.includes(mention.toLowerCase()) || 
+                locationAfterPattern.includes('capital') && mention.toLowerCase() === 'logroño') {
+              return mention;
+            }
           }
         }
       }
